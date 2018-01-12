@@ -174,7 +174,7 @@ namespace RecoderCore
                              "컴퓨터가 종료되는 것을 원치 않으시면 30초 이내에 cmd를 실행하고 \nshutdown -a를 " +
                             "입력하시거나 종료 취소 버튼을 눌러주세요");
 
-                            Process.Start("shutdown.exe", "-s -t 45");
+                            Process.Start("shutdown", "-s -t 45");
 
                             button3EnabledSet(true);
                         }
