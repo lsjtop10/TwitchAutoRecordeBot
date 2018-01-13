@@ -166,5 +166,75 @@ namespace Twitch_livestream_auto_recoder
             }
 
         }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "")
+            {
+                MessageBox.Show("오류: 설정을 적용할 수 없습니다. 다음의 사항을 빠짐없이 입력했는지 확인해 주세요" +
+                                 "\n 1.스트리머 ID" +
+                                 "\n 2.Client ID" +
+                                 "\n 3.저장경로" +
+                                 "\n 4.새로고침 시간");
+                return;
+            }
+
+            try
+            {
+                Settings.UserName = textBox1.Text;
+                Settings.Directory = @textBox3.Text;
+                Settings.ClientID = textBox2.Text;
+                Settings.TurnOffAfterRecod = checkBox1.Checked;
+
+                if (comboBox1.Text == "160p (worst)")
+                {
+                    Settings.Quality = "worst";
+                }
+                else if (comboBox1.Text == "720p (best)")
+                {
+                    Settings.Quality = "best";
+                }
+                else
+                {
+                    Settings.Quality = comboBox1.Text;
+                }
+
+                bool ParseSucces = int.TryParse(textBox4.Text, out Settings.Refresh);
+
+                if (ParseSucces == false)
+                {
+                    MessageBox.Show("오류: 설정을 적용할 수 없습니다. 새로고침 시간에 허용할 수 없는 문자가 있습니다");
+                    return;
+                }
+                else
+                {
+                    if (Settings.Refresh < 0)
+                    {
+                        MessageBox.Show("오류: 설정을 적용할 수 없습니다. 음수값은 허용되지 않습니다.");
+
+                        textBox4.Text = "";
+                        Settings.Refresh = 0;
+                        return;
+                    }
+                }
+
+                FileStream fs = new FileStream("Settings.txt", FileMode.Create, FileAccess.Write);
+                StreamWriter sw = new StreamWriter(fs);
+
+                sw.WriteLine(Settings.Refresh.ToString());
+                sw.WriteLine(Settings.UserName);
+                sw.WriteLine(Settings.Quality);
+                sw.WriteLine(@Settings.Directory);
+                sw.WriteLine(Settings.ClientID);
+                sw.WriteLine(Settings.TurnOffAfterRecod);
+                sw.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("오류: 설정을 적용하는 중에 오류가 발생했습니다.\n오류 메세지:" +
+                                ex.Message);
+            }
+
+        }
     }
 }

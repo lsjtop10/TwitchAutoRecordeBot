@@ -14,12 +14,15 @@ using System.Diagnostics;
 
 namespace Twitch_livestream_auto_recoder
 {
-    public delegate void LogWritedelegate(string info);
     public delegate void StatusBoxUpdateDelegate(RecoderCore.Status status);
     public delegate void Button3EnabledSetDelegate(bool enabled);
+    public delegate void ProcessInfoSetDelegate(string info);
 
     public partial class Form1 : Form
     {
+
+
+
         Thread thread1;
         StreamMonitor monitor;
         public Form1()
@@ -27,6 +30,7 @@ namespace Twitch_livestream_auto_recoder
             InitializeComponent();
         }
 
+        public delegate void LogWritedelegate(string info);
         public void LogWrite(string info)
         {
             if (this.InvokeRequired == true)
@@ -82,7 +86,10 @@ namespace Twitch_livestream_auto_recoder
             }
         }
 
+        public void ProcessInfoSet(string info)
+        {
 
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -107,7 +114,7 @@ namespace Twitch_livestream_auto_recoder
             LogWrite("프로그램이 시작되었습니다");
             LogWrite("버전: " + Settings.version);
 
-            monitor = new StreamMonitor(new LogWritedelegate(LogWrite), new StatusBoxUpdateDelegate(StatusBoxUpdate), new Button3EnabledSetDelegate(Button3EnabledSet));
+            monitor = new StreamMonitor(this);
 
             button3.Enabled = false;
 
@@ -147,12 +154,12 @@ namespace Twitch_livestream_auto_recoder
                 FileStream fs = new FileStream("Settings.txt", FileMode.Create, FileAccess.Write);
                 StreamWriter sw = new StreamWriter(fs);
 
-                sw.WriteLine(Settings.Refresh.ToString());
-                sw.WriteLine(Settings.UserName);
-                sw.WriteLine(Settings.Quality);
-                sw.WriteLine(@Settings.Directory);
-                sw.WriteLine(Settings.ClientID);
-                sw.Close();
+                //sw.WriteLine(Settings.Refresh.ToString());
+                //sw.WriteLine(Settings.UserName);
+                //sw.WriteLine(Settings.Quality);
+                //sw.WriteLine(@Settings.Directory);
+                //sw.WriteLine(Settings.ClientID);
+                fs.Close();
 
                 LogWrite("Settings.txt를 생성하였습니다.");
 
@@ -160,6 +167,12 @@ namespace Twitch_livestream_auto_recoder
 
                 Form2 dig = new Form2();
                 dig.ShowDialog();
+
+                textBox1.Text = Settings.UserName;
+                textBox3.Text = Settings.Quality;
+                textBox4.Text = Settings.ClientID;
+
+
                 dig.Dispose();
             }
         }
@@ -174,6 +187,7 @@ namespace Twitch_livestream_auto_recoder
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+
             Process[] ProcessList = Process.GetProcessesByName("livestreamer");
 
             if (ProcessList.Length > 0)
@@ -184,7 +198,10 @@ namespace Twitch_livestream_auto_recoder
                 }
             }
 
-            thread1.Abort();
+            if (thread1 != null)
+            {
+                thread1.Abort();
+            }
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -203,11 +220,17 @@ namespace Twitch_livestream_auto_recoder
                 button3.Enabled = enabled;
             }
         }
+
         private void button3_Click(object sender, EventArgs e)
         {
             Process.Start("shutdown", "-a");
 
             button3.Enabled = false;
+        }
+
+        public void ProcessInfoSet(string info)
+        {
+
         }
     }
 }
