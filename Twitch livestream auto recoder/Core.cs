@@ -25,11 +25,13 @@ namespace RecoderCore
         public static string Quality = "";
         public static string Directory = @"";
 
-        //Input your Client id from witch deloper page
+        //Input your Client id from deloper page
         public static string ClientID = "";
 
-        public static string version = "1.0.2";
+        public static string version = "1.0.3";
         public static bool TurnOffAfterRecod = false;
+
+        public static bool LivestreamerMinimize = true;
 
     }
 
@@ -63,6 +65,7 @@ namespace RecoderCore
                 Stream ResponseStream;
                 HttpWebResponse response;
 
+                Form1ref.LogWrite(Settings.UserName + "의 스트림 정보를 요청합니다. ");
                 string result = null;
                 response = (HttpWebResponse)request.GetResponse();
                 ResponseStream = response.GetResponseStream();
@@ -103,7 +106,7 @@ namespace RecoderCore
 
                 if (UserStatus == Status.NotFound)
                 {
-                    Form1ref.LogWrite("현재 스트림을 찾을 수 없습니다. 스트리머 ID:" + Settings.UserName);
+                    Form1ref.LogWrite("현재 스트림을 찾을 수 없습니다. ");
 
                 }
                 else if (UserStatus == Status.online)
@@ -131,12 +134,6 @@ namespace RecoderCore
         {
             while (true)
             {
-
-                string LivestreamerOut = "";
-                while (livestreamer != null)
-                {
-                    
-                }
 
                 while (Form1.ProcessIsPause == true)
                 {
@@ -182,7 +179,7 @@ namespace RecoderCore
 
                 }
 
-                Thread.Sleep(100);
+                Thread.Sleep(500);
 
             }
 
@@ -204,17 +201,18 @@ namespace RecoderCore
 
             livestreamer.StartInfo.FileName = "livestreamer.exe";
             livestreamer.StartInfo.Arguments = argmuments;
-            //process.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
-            //process.StartInfo.CreateNoWindow = false;
-            livestreamer.StartInfo.RedirectStandardOutput = true;
-            livestreamer.StartInfo.UseShellExecute = false;
+
+            if (Settings.LivestreamerMinimize == true)
+            {
+                livestreamer.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
+            }
+            else
+            {
+                livestreamer.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+            }
             livestreamer.Start();
         }
 
-        private void GetLivestreamerOut()
-        {
-
-        }
 
     }
 }

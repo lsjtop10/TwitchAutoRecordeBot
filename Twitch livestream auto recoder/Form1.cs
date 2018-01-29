@@ -14,9 +14,7 @@ using System.Diagnostics;
 
 namespace Twitch_livestream_auto_recoder
 {
-    public delegate void StatusBoxUpdateDelegate(RecoderCore.Status status);
-    public delegate void Button3EnabledSetDelegate(bool enabled);
-    public delegate void ProcessInfoSetDelegate(string info);
+
 
     public partial class Form1 : Form
     {
@@ -53,7 +51,7 @@ namespace Twitch_livestream_auto_recoder
             }
         }
 
-
+        public delegate void StatusBoxUpdateDelegate(RecoderCore.Status status);
         public void StatusBoxUpdate(RecoderCore.Status status)
         {
             if (InvokeRequired == true)
@@ -84,11 +82,6 @@ namespace Twitch_livestream_auto_recoder
                 LogWrite("일시정지 되었습니다.");
 
             }
-        }
-
-        public void ProcessInfoSet(string info)
-        {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -138,6 +131,7 @@ namespace Twitch_livestream_auto_recoder
                 Settings.Directory = sr.ReadLine();
                 Settings.ClientID = sr.ReadLine();
                 Settings.TurnOffAfterRecod = bool.Parse(sr.ReadLine());
+                Settings.LivestreamerMinimize = bool.Parse(sr.ReadLine());
 
                 textBox1.Text = Settings.UserName;
                 textBox3.Text = Settings.Quality;
@@ -163,7 +157,7 @@ namespace Twitch_livestream_auto_recoder
 
                 LogWrite("Settings.txt를 생성하였습니다.");
 
-                MessageBox.Show("기본 설정을 해 주세요");
+                MessageBox.Show("초기설정을 해 주세요");
 
                 Form2 dig = new Form2();
                 dig.ShowDialog();
@@ -208,7 +202,7 @@ namespace Twitch_livestream_auto_recoder
         {
         }
 
-
+        public delegate void Button3EnabledSetDelegate(bool enabled);
         public void Button3EnabledSet(bool enabled)
         {
             if (this.InvokeRequired == true)
@@ -228,9 +222,5 @@ namespace Twitch_livestream_auto_recoder
             button3.Enabled = false;
         }
 
-        public void ProcessInfoSet(string info)
-        {
-
-        }
     }
 }
