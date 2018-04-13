@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twitch livestream auto recoder", "Twitch livestream auto recoder\Twitch livestream auto recoder.csproj", "{405CB755-8CD4-4362-8121-F0A7A0AA3134}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{EB448D75-6F03-424B-B588-21290B2792CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{405CB755-8CD4-4362-8121-F0A7A0AA3134}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{405CB755-8CD4-4362-8121-F0A7A0AA3134}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{405CB755-8CD4-4362-8121-F0A7A0AA3134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB448D75-6F03-424B-B588-21290B2792CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB448D75-6F03-424B-B588-21290B2792CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB448D75-6F03-424B-B588-21290B2792CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB448D75-6F03-424B-B588-21290B2792CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
