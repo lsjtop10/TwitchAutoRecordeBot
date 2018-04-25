@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twitch livestream auto recorder", "Twitch livestream auto recoder\Twitch livestream auto recorder.csproj", "{405CB755-8CD4-4362-8121-F0A7A0AA3134}"
 EndProject
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F4951737-80DE-4A67-AEBB-2A48F962F2FB}
+		SolutionGuid = {8B5A9637-F4B5-4449-9478-75A147F19322}
 	EndGlobalSection
 EndGlobal
