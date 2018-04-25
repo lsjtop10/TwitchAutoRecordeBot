@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twitch livestream auto recorder", "Twitch livestream auto recoder\Twitch livestream auto recorder.csproj", "{405CB755-8CD4-4362-8121-F0A7A0AA3134}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twitch livestream auto recorder", "Twitch livestream auto recorder\Twitch livestream auto recorder.csproj", "{405CB755-8CD4-4362-8121-F0A7A0AA3134}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
