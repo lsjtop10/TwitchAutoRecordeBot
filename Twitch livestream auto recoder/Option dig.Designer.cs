@@ -278,6 +278,7 @@
             this.label14.Size = new System.Drawing.Size(109, 16);
             this.label14.TabIndex = 22;
             this.label14.Text = "새로고침 시간";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // textBox4
             // 
@@ -294,7 +295,7 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(271, 11);
             this.label15.TabIndex = 24;
-            this.label15.Text = "스트림을 한번 확인한 뒤대기할 시간을 입력해 주세요";
+            this.label15.Text = "스트림을 한번 확인한뒤 대기할 시간을 입력해 주세요";
             // 
             // label16
             // 
@@ -397,7 +398,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.ShowInTaskbar = false;
-            this.Text = "Twitch Automatic Recoder - setting";
+            this.Text = "Twitch Automatic Recorder - setting";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);

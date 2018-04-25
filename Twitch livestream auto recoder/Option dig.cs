@@ -194,5 +194,10 @@ namespace Twitch_livestream_auto_recoder
         {
 
         }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
