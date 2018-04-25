@@ -28,7 +28,7 @@ namespace RecoderCore
         //Input your Client id from deloper page
         public static string ClientID = "";
 
-        public static string version = "1.0.5";
+        public static string version = "1.0.6";
         public static bool TurnOffAfterRecod = false;
 
         public static bool LivestreamerMinimize = true;
