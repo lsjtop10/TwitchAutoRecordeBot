@@ -12,25 +12,43 @@ namespace RecoderCore
 
     public enum Status { online = 0, NotFound, error, Not_determined }
 
-
-    //It is a sotrage this program stting to static value
-    [Serializable]
     class Settings
     {
-        //This vlaue is to storege how many refres to chek 
-        //if the tiwich stream online
+        /// <summary>
+        /// 새로고침 시간 기본값:30
+        /// </summary>
         public static int Refresh = 30;
 
+        /// <summary>
+        /// 대상 스트리머 이름 
+        /// </summary>
         public static string UserName = "";
+        /// <summary>
+        /// 설정 화질 
+        /// </summary>
         public static string Quality = "";
+        /// <summary>
+        /// 저장 위치 
+        /// </summary>
         public static string Directory = @"";
 
-        //Input your Client id from deloper page
+        /// <summary>
+        /// 트위치 개발자 페이지에서 발급받은 ClientID
+        /// </summary>
         public static string ClientID = "";
 
+        /// <summary>
+        /// 현재 버전
+        /// </summary>
         public static string version = "1.0.6";
+        /// <summary>
+        /// PC자동종료 여부 기본값:false
+        /// </summary>
         public static bool TurnOffAfterRecod = false;
 
+        /// <summary>
+        /// livestreamer를 최소 크기로 실행시키는지 여부 기본값:false
+        /// </summary>
         public static bool LivestreamerMinimize = true;
 
     }
@@ -38,6 +56,9 @@ namespace RecoderCore
 
     class StreamMonitor
     {
+        /// <summary>
+        /// 메인 폼의 참조
+        /// </summary>
         Form1 Form1ref;
 
         public StreamMonitor(Form1 form1ref)
@@ -45,7 +66,9 @@ namespace RecoderCore
             Form1ref = form1ref;
         }
 
-        //유저의 스트림 상태를 확인하는 함수
+        /// <summary>
+        ///유저의 스트림 상태를 확인하는 함수
+        /// </summary>
         private Status ChekUser()
         {
             //초기 세팅
