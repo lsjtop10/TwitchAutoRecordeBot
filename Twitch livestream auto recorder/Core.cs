@@ -12,6 +12,9 @@ namespace RecoderCore
 
     public enum Status { online = 0, NotFound, error, Not_determined }
 
+    /// <summary>
+    /// 프로그램 설정 관리
+    /// </summary>
     class Settings
     {
         /// <summary>
@@ -50,15 +53,10 @@ namespace RecoderCore
         /// livestreamer를 최소 크기로 실행시키는지 여부 기본값:false
         /// </summary>
         public static bool LivestreamerMinimize = true;
-
     }
-
 
     class StreamMonitor
     {
-        /// <summary>
-        /// 메인 폼의 참조
-        /// </summary>
         Form1 Form1ref;
 
         public StreamMonitor(Form1 form1ref)
@@ -66,9 +64,7 @@ namespace RecoderCore
             Form1ref = form1ref;
         }
 
-        /// <summary>
-        ///유저의 스트림 상태를 확인하는 함수
-        /// </summary>
+        //유저의 스트림 상태를 확인하는 함수
         private Status ChekUser()
         {
             //초기 세팅
